@@ -6,7 +6,6 @@ import org.springframework.stereotype.Service;
 
 import java.time.LocalDate;
 import java.time.temporal.ValueRange;
-import java.util.Random;
 
 @Service
 public class ClientEnrollService {
@@ -18,13 +17,12 @@ public class ClientEnrollService {
         if (isAnExistingClient(client)) {
             return new Pair<>(Boolean.FALSE, "Client does already exist");
         }
-        int clientReputation = getClientReputation(client);
-        return checkClientReputation(clientReputation);
+        return checkClientReputation(getClientReputation(client));
     }
 
     //This method is a placeholder for a call to an external system
     private boolean isAnExistingClient(ClientDTO client) {
-        return new Random().nextBoolean();
+        return client.getCNP().charAt(0) < '5';
     }
 
     private Pair<Boolean, String> checkClientReputation(int clientReputation) {

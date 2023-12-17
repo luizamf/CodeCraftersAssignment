@@ -1,10 +1,10 @@
 package com.challenge.clientEnroller.entity;
 
 
-import lombok.Builder;
-import lombok.NoArgsConstructor;
 import org.hibernate.annotations.UuidGenerator;
-import javax.persistence.*;
+
+import javax.persistence.Entity;
+import javax.persistence.Id;
 import java.io.Serializable;
 import java.time.LocalDate;
 import java.util.UUID;
