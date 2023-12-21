@@ -1,16 +1,20 @@
 package com.challenge.clientEnroller.entity;
 
 
+import com.challenge.clientEnroller.utils.ClientStatus;
+import jakarta.persistence.Entity;
+import jakarta.persistence.Id;
+import jakarta.persistence.Table;
+import lombok.Data;
 import org.hibernate.annotations.UuidGenerator;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
 import java.io.Serializable;
 import java.time.LocalDate;
 import java.util.UUID;
 
-//In case DB is needed.
 @Entity
+@Table
+@Data
 public class Client implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -24,5 +28,18 @@ public class Client implements Serializable {
     private String CNP;
     private LocalDate startDate;
     private LocalDate expiryDate;
+    private ClientStatus clientStatus;
 
+    public Client(String firstName, String lastName, String documentID, String CNP, LocalDate startDate, LocalDate expiryDate) {
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.documentID = documentID;
+        this.CNP = CNP;
+        this.startDate = startDate;
+        this.expiryDate = expiryDate;
+    }
+
+    public Client() {
+
+    }
 }

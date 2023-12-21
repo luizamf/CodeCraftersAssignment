@@ -22,11 +22,11 @@ import java.util.Map;
 @RestController
 @RequestMapping(value = "/client/enroll")
 public class ClientEnrollController {
-    private final ClientEnrollService caregiverService;
+    private final ClientEnrollService clientEnrollService;
 
     @Autowired
-    public ClientEnrollController(ClientEnrollService caregiverService) {
-        this.caregiverService = caregiverService;
+    public ClientEnrollController(ClientEnrollService clientEnrollService) {
+        this.clientEnrollService = clientEnrollService;
     }
 
     @Operation(summary = "Checks the client's document ID validity.")
@@ -37,7 +37,7 @@ public class ClientEnrollController {
                     content = {@Content(mediaType = "application/json", schema = @Schema(implementation = ClientDTO.class))})})
     @PostMapping(value = "/checkClient")
     public ResponseEntity<Pair<Boolean, String>> checkClient(@Valid @RequestBody ClientDTO clientDTO) {
-        return new ResponseEntity<>(caregiverService.checkClient(clientDTO), HttpStatus.OK);
+        return new ResponseEntity<>(clientEnrollService.checkClient(clientDTO), HttpStatus.OK);
     }
 
     @ResponseStatus(HttpStatus.BAD_REQUEST)

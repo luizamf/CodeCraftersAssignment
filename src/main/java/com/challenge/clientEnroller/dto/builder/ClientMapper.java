@@ -2,12 +2,12 @@ package com.challenge.clientEnroller.dto.builder;
 
 import com.challenge.clientEnroller.dto.ClientDTO;
 import com.challenge.clientEnroller.entity.Client;
-import org.mapstruct.Mapper;
+import lombok.experimental.UtilityClass;
 
-@Mapper
-public interface ClientMapper {
+@UtilityClass
+public class ClientMapper {
 
-    ClientDTO toClientDTO(Client client);
-
-    Client toEntity(ClientDTO caregiverDetailsDTO);
+    public Client toEntity(ClientDTO clientDTO) {
+        return new Client(clientDTO.getFirstName(), clientDTO.getLastName(), clientDTO.getDocumentID(), clientDTO.getCNP(), clientDTO.getStartDate(), clientDTO.getExpiryDate());
+    }
 }
