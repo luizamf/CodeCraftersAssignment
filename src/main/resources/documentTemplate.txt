@@ -1,0 +1,1 @@
+The request for enrollment for Mr./Ms. %s  %s, having the following ID information: document number %s and CNP %s, has been %s by the Bank of Romania.

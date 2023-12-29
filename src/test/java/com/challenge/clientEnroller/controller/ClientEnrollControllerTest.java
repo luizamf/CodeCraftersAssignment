@@ -72,6 +72,14 @@ class ClientEnrollControllerTest {
                 .andExpect(status().isBadRequest()).andReturn();
         assertTrue(mvcResult.getResponse().getContentAsString().contains("\"firstName\":\"must not be blank\""));
         assertTrue(mvcResult.getResponse().getContentAsString().contains("\"lastName\":\"must not be blank\""));
+    }
 
+    @Test
+    public void generateDocument() throws Exception {
+        ClientDTO client = new ClientDTO("name", "lastName", "XT123456", "1234567891234", LocalDate.parse("2014-12-17"), LocalDate.parse("2024-12-17"));
+        mvc.perform(post("/client/enroll/generateDocument")
+                .content(objectMapper.writeValueAsString(client))
+                .contentType("application/json"))
+                .andExpect(status().isOk());
     }
 }
